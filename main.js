@@ -245,5 +245,30 @@ function sellProducts(requestedProduct, productsArray) {
     return false;}
 }
 
-console.log(sellProducts({name: "Hisense 32D Frameless", qty: 211}, productsCatalog))
+function lowStockReport(productArray) {
+  let lowStockFound = false;
+  
+  for (let product of productArray) {
+    
+    if (product.qty <= product.reoderLevel) {
+console.log(`${product.name} is ${product.qty} this needs to be restocked`);
 
+      lowStockFound = true;
+    }
+  }
+
+  if (!lowStockFound) {
+    console.log("All products are in stock")
+  }
+}
+
+function outOfStockReport(productArray) {
+  let outOfStock = [];
+  for (let product of productArray) {
+    if (product.qty === 0) {
+      outOfStock.push(product);
+      console.log(outOfStock);
+    }
+  }
+  return outOfStock;
+}
