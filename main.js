@@ -216,3 +216,34 @@ console.log(`${receivedProducts.name} does not exist`);
   }
   return currentProducts;
 }
+
+function sellProducts(requestedProduct, productsArray) {
+  let productFound = false;
+  
+  for (let product of productsArray) {
+    if (product.name.toLowerCase() === requestedProduct.name.toLowerCase()) {
+      productFound = true;
+      
+      if (!product.activeStatus) {
+        console.log("activate your product");
+        return false;
+      }
+
+      if (product.qty < requestedProduct.qty) {
+        console.log(`Invalid transaction, product available is ${product.qty}`);
+        return false;
+      }
+
+      product.qty -= requestedProduct.qty;
+      console.log(`Transaction Success: Sold ${requestedProduct.qty} units of ${product.name}. Remaining stock: ${product.qty}.`);
+      return true;
+    }
+  }
+
+  if (!productFound) {
+    console.log("Transaction Failed: Product does not exist.");
+    return false;}
+}
+
+console.log(sellProducts({name: "Hisense 32D Frameless", qty: 211}, productsCatalog))
+
