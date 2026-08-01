@@ -122,7 +122,7 @@ const productsCatalog = [
 
 //function adds products and validates
 function addNewProducts(product) {
-  if(!product.id || !product.name || !product.price || !product.qty) {
+  if(product.id === undefined || !product.name || !product.price || !product.qty) {
     console.log("Required products information missing");
     return;
   };
@@ -268,9 +268,9 @@ function outOfStockReport(productArray) {
   for (let product of productArray) {
     if (product.qty === 0) {
       outOfStock.push(product);
-      console.log(outOfStock);
     }
   }
+  console.log(outOfStock);
   return outOfStock;
 }
 
@@ -299,6 +299,15 @@ function cheapestProduct(productsArray) {
   return lowestPrice;
 }
 
-function totalInventoryValue(productsCatalog) {
+function totalInventoryValue(productCatalog) {
+  let totalValue = 0;
   
+  for (let i = 0; i < productCatalog.length; i++) {
+    totalValue += productCatalog[i].price * productCatalog[i].qty;
+  }
+
+  console.log(totalValue);
+  return totalValue;
 }
+
+totalInventoryValue(productsCatalog)
