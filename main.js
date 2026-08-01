@@ -264,6 +264,7 @@ console.log(`${product.name} is ${product.qty} this needs to be restocked`);
 
 function outOfStockReport(productArray) {
   let outOfStock = [];
+  
   for (let product of productArray) {
     if (product.qty === 0) {
       outOfStock.push(product);
@@ -271,4 +272,33 @@ function outOfStockReport(productArray) {
     }
   }
   return outOfStock;
+}
+
+function mostExpensiveProduct(productsArray) {
+  let mostExpensive = productsArray[0];
+  
+  for (let i = 0; i < productsArray.length; i++) {
+    if (productsArray[i].price > mostExpensive.price) {
+      mostExpensive = productsArray[i];
+    }
+  }
+  console.log(mostExpensive)
+  return mostExpensive;
+}
+
+function cheapestProduct(productsArray) {
+  let lowestPrice = productsArray[0];
+  
+  for (let i = 0; i < productsArray.length; i++) {
+    if (productsArray[i].price < lowestPrice.price) {
+      lowestPrice = productsArray[i];
+    }
+  }
+
+  console.log(lowestPrice);
+  return lowestPrice;
+}
+
+function totalInventoryValue(productsCatalog) {
+  
 }
