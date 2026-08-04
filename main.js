@@ -310,4 +310,47 @@ function totalInventoryValue(productCatalog) {
   return totalValue;
 }
 
-totalInventoryValue(productsCatalog)
+function countProducts(productCatalog) {
+  let totalProducts = 0;
+  let activeProducts = 0;
+  let inactiveProducts = 0;
+  
+  for (let i = 0; i < productCatalog.length; i++) {
+    totalProducts++
+
+    if (productCatalog[i].activeStatus === true) {
+      activeProducts++
+    }
+
+    if (!productCatalog[i].activeStatus) {
+     inactiveProducts++ 
+    }
+  }
+
+  console.log(activeProducts);
+  console.log(inactiveProducts);
+  console.log(totalProducts);
+  
+  return {
+    totalProducts,
+    activeProducts,
+    inactiveProducts
+  };
+}
+
+function productsCategory(productCatalog) {
+  const categoryCount = {};
+  
+  for (let i = 0; i < productCatalog.length; i++) {
+    const  categories = productCatalog[i].category;
+
+    if (categoryCount[categories] !== undefined) {
+      categoryCount[categories] += 1;
+    } else {
+      categoryCount[categories] = 1;
+    }
+  }
+  console.log(categoryCount);
+  return categoryCount;
+}
+
