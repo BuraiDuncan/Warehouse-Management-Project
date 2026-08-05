@@ -352,5 +352,5 @@ function productsCategory(productCatalog) {
   }
   console.log(categoryCount);
   return categoryCount;
-}
+} 
 
