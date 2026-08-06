@@ -251,7 +251,7 @@ function lowStockReport(productArray) {
   for (let product of productArray) {
     
     if (product.qty <= product.reoderLevel) {
-console.log(`${product.name} is ${product.qty} this needs to be restocked`);
+      console.log(`${product.name} is ${product.qty} this needs to be restocked`);
 
       lowStockFound = true;
     }
